@@ -1,0 +1,28 @@
+@import "../../styles/vars.scss";
+
+.container {
+  @include mq{
+    padding-left: 338px;
+    background-color: $base-gray;
+    min-height: 100vh;
+  }
+}
+
+.side {
+  @include mq{
+    overflow: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    max-width: 338px;
+    background-color: #fff;
+
+  }
+}
+
+.main {
+  @include mq{
+    padding: 20px 16px 20px;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/vars.scss";
+
+.header {
+  background-color: $primary;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &-logo {
+    padding: 18px;
+    color: #fff;
+    font-size: 16px;
+  }
+  &-close {
+    height: 62px;
+    width: 62px;
+    background-color: darken($primary, 40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > svg {
+      width: 16px;
+    }
+  }
+}
+
+.contents {
+  padding: 20px;
+}

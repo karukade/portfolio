@@ -1,0 +1,28 @@
+$font-family: dnp-shuei-gothic-kin-std, sans-serif;
+$font-size: 16px;
+$line-height: 1.6;
+$primary: #181C26;
+$base-gray: #F9F9F9;
+$l-gray: #E3E3E3;
+$font-color: #181C26;
+
+$radius: (
+  l: 16px,
+  m: 10px,
+  s: 4px
+);
+
+$bp: (
+  l: 'screen and (min-width: 1200px)',
+  m: 'screen and (min-width: 768px)'
+);
+
+@mixin radius($size: l) {
+  border-radius: map-get($radius, $size);
+}
+
+@mixin mq($size: m) {
+  @media #{map-get($bp, $size)} {
+    @content
+  }
+}
