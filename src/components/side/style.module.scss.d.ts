@@ -1,4 +1,3 @@
-export const header: string;
-export const headerLogo: string;
-export const headerClose: string;
 export const contents: string;
+export const section: string;
+export const emoji: string;

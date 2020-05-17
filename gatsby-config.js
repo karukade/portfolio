@@ -13,7 +13,7 @@ module.exports = {
     author: `gatsby`
   },
   plugins: [
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-scss-typescript`,
     `gatsby-plugin-svg-sprite`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,

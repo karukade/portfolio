@@ -1,7 +1,6 @@
 import React from "react"
 import { IndexQuery } from "../../../types/graphql-types"
 import style from "./style.module.scss"
-import ArrowIcon from "../../images/ico-arrow.svg"
 
 type Skills = { hobby: JSX.Element[]; job: JSX.Element[] }
 
@@ -19,22 +18,15 @@ const Side: React.FC<{ person: IndexQuery["contentfulPerson"] }> = ({
   )
   return (
     <div>
-      <header className={style.header}>
-        <h1 className={style.headerLogo}>嘉手苅志朗 Shiro Kadekaru</h1>
-        <span className={style.headerClose}>
-          <svg viewBox={ArrowIcon.viewBox}>
-            <use xlinkHref={`#${ArrowIcon.id}`} />
-          </svg>
-        </span>
-      </header>
       <div className={style.contents}>
-        <div>
+        <div className={style.section}>
+          <span className={style.emoji}>👶</span>
           {person?.birthday}
           <p>{person?.shortBio?.shortBio}</p>
         </div>
-        <section>
+        <section className={style.section}>
           <h3>
-            <span>🛠</span>職歴
+            <span className={style.emoji}>🛠</span>職歴
           </h3>
           <ul>
             {person?.jobHistory?.map((item, i) => (
@@ -42,7 +34,7 @@ const Side: React.FC<{ person: IndexQuery["contentfulPerson"] }> = ({
             ))}
           </ul>
         </section>
-        <section>
+        <section className={style.section}>
           <h3>
             <span>💪</span>スキルセット
           </h3>

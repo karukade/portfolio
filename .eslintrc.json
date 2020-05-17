@@ -46,5 +46,5 @@
       "never"
     ]
   },
-  "ignorePatterns": ["gatsby-config.js", "gatsby-node.js"]
+  "ignorePatterns": ["gatsby-config.js", "gatsby-node.js", "graphql-types.d.ts", "*.scss.d.ts"]
 }
