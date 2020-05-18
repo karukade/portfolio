@@ -1,20 +1,26 @@
 import React from "react"
 import { IndexQuery } from "../../../types/graphql-types"
+import List from "../list"
+import SkillTag from "../skillTag"
+import ListInline from "../listInline"
+import TitleEmoji from "../ttlEmoji"
 import style from "./style.module.scss"
+import { IconNames } from "../icons"
 
-type Skills = { hobby: JSX.Element[]; job: JSX.Element[] }
+type PropsType = {
+  person: IndexQuery["contentfulPerson"]
+  skills: [IndexQuery["skillHobby"], IndexQuery["skillJob"]]
+}
 
-const Side: React.FC<{ person: IndexQuery["contentfulPerson"] }> = ({
-  person,
-}) => {
-  const skills = person?.skill?.reduce(
-    (skills: Skills, skill, index) => {
-      if (!skill?.name) return skills
-      const key = skill?.onlyHobby ? "hobby" : "job"
-      skills[key].push(<li key={index}>{skill.name}</li>)
-      return skills
-    },
-    { hobby: [], job: [] }
+const Side: React.FC<PropsType> = ({ person, skills }) => {
+  const [hobby, job] = skills.map(({ edges }) =>
+    edges.map(({ node }) => (
+      <SkillTag
+        key={node.key as string}
+        name={node.key as IconNames}
+        label={node.name as string}
+      />
+    ))
   )
   return (
     <div>
@@ -25,32 +31,24 @@ const Side: React.FC<{ person: IndexQuery["contentfulPerson"] }> = ({
           <p>{person?.shortBio?.shortBio}</p>
         </div>
         <section className={style.section}>
-          <h3>
-            <span className={style.emoji}>🛠</span>職歴
-          </h3>
-          <ul>
-            {person?.jobHistory?.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </section>
-        <section className={style.section}>
-          <h3>
-            <span>💪</span>スキルセット
-          </h3>
-          <dl>
-            <dt>実務</dt>
+          <TitleEmoji emoji="💪">スキルセット</TitleEmoji>
+          <dl className={style.skillList}>
+            <dt className={style.skillListTtl}>仕事</dt>
             <dd>
-              <ul>{skills?.job}</ul>
+              <ListInline items={job} />
             </dd>
           </dl>
-          <dl>
-            <dt>趣味</dt>
+          <dl className={style.skillList}>
+            <dt className={style.skillListTtl}>趣味</dt>
             <dd>
-              <ul>{skills?.hobby}</ul>
+              <ListInline items={hobby} />
             </dd>
           </dl>
         </section>
+        {/* <section className={style.section}>
+          <TitleEmoji emoji="🛠">職歴</TitleEmoji>
+          <List items={person?.jobHistory} />
+        </section> */}
       </div>
     </div>
   )

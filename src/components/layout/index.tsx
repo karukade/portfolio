@@ -1,14 +1,11 @@
-import React, { useState, useCallback } from "react"
-import { CSSTransition } from "react-transition-group"
+import React, { useState, useCallback, ReactNode } from "react"
 import classnames from "classnames"
 import style from "./style.module.scss"
 import Header from "../header"
 
-const { enter, enterActive, exit, exitActive } = style
-
 type Props = {
-  side: JSX.Element
-  main: JSX.Element
+  side: React.ReactNode
+  main: React.ReactNode
 }
 
 const Layout: React.FC<Props> = props => {

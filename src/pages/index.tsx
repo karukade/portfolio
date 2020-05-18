@@ -3,14 +3,21 @@ import { graphql } from "gatsby"
 import { IndexQuery } from "../../types/graphql-types"
 import Layout from "../components/layout"
 import Side from "../components/side"
+import Main from "../components/main"
 import Head from "../components/head"
-
-const Main = () => <div>Main</div>
 
 const Component: React.FC<{ data: IndexQuery }> = ({ data }) => (
   <div>
     <Head />
-    <Layout side={<Side person={data.contentfulPerson} />} main={<Main />} />
+    <Layout
+      side={
+        <Side
+          person={data.contentfulPerson}
+          skills={[data.skillHobby, data.skillJob]}
+        />
+      }
+      main={<Main works={{ hobby: data.hobby, job: data.job }} />}
+    />
   </div>
 )
 
@@ -21,26 +28,57 @@ export const query = graphql`
       shortBio {
         shortBio
       }
-      skill {
-        name
-        onlyHobby
-      }
       github
       birthday
       jobHistory
     }
-    allContentfulPost {
+
+    skillHobby: allContentfulSkill(filter: { onlyHobby: { eq: true } }) {
       edges {
         node {
-          features
-          skills {
-            name
-          }
+          name
+          key
+        }
+      }
+    }
+
+    skillJob: allContentfulSkill(filter: { onlyHobby: { eq: false } }) {
+      edges {
+        node {
+          name
+          key
+        }
+      }
+    }
+
+    hobby: allContentfulPost(filter: { isJob: { eq: false } }) {
+      edges {
+        node {
           title
           description {
             description
           }
-          isJob
+          features
+          skills {
+            key
+            name
+          }
+        }
+      }
+    }
+
+    job: allContentfulPost(filter: { isJob: { eq: true } }) {
+      edges {
+        node {
+          title
+          description {
+            description
+          }
+          features
+          skills {
+            key
+            name
+          }
         }
       }
     }

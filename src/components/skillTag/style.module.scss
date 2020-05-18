@@ -1,0 +1,15 @@
+@import "../../styles/vars";
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  // background-color: $l-gray-lighten;
+  border-radius: 180px;
+  padding: 4px 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  > i {
+    margin-right: 4px;
+  }
+}

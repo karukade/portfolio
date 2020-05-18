@@ -1,165 +1,82 @@
-/*
-Icon classes can be used entirely standalone. They are named after their original file names.
-
-Example usage in HTML:
-
-`display: block` sprite:
-<div class="icon-home"></div>
-
-To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
-
-// CSS
 .icon {
   display: inline-block;
-}
-
-// HTML
-<i class="icon icon-home"></i>
-*/
-.icon {
-  display: inline-block;
+  background-image: url(../../images/sprite.png);
 }
 .css {
-  background-image: url(../../images/sprite.png);
   background-position: 0px 0px;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
 }
 .electron {
-  background-image: url(../../images/sprite.png);
-  background-position: -24px 0px;
-  width: 24px;
-  height: 24px;
+  background-position: -18px 0px;
+  width: 18px;
+  height: 18px;
 }
 .firebase {
-  background-image: url(../../images/sprite.png);
-  background-position: 0px -24px;
-  width: 24px;
-  height: 24px;
+  background-position: 0px -18px;
+  width: 18px;
+  height: 18px;
 }
 .github {
-  background-image: url(../../images/sprite.png);
-  background-position: -24px -24px;
-  width: 24px;
-  height: 24px;
+  background-position: -18px -18px;
+  width: 18px;
+  height: 18px;
 }
 .html {
-  background-image: url(../../images/sprite.png);
-  background-position: -48px 0px;
-  width: 24px;
-  height: 24px;
+  background-position: -36px 0px;
+  width: 18px;
+  height: 18px;
 }
 .js {
-  background-image: url(../../images/sprite.png);
-  background-position: -48px -24px;
-  width: 24px;
-  height: 24px;
+  background-position: -36px -18px;
+  width: 18px;
+  height: 18px;
 }
 .m5stack {
-  background-image: url(../../images/sprite.png);
-  background-position: 0px -48px;
-  width: 24px;
-  height: 24px;
+  background-position: 0px -36px;
+  width: 18px;
+  height: 18px;
 }
 .nodejs {
-  background-image: url(../../images/sprite.png);
-  background-position: -24px -48px;
-  width: 24px;
-  height: 24px;
+  background-position: -18px -36px;
+  width: 18px;
+  height: 18px;
 }
 .nuxt {
-  background-image: url(../../images/sprite.png);
-  background-position: -48px -48px;
-  width: 24px;
-  height: 24px;
+  background-position: -36px -36px;
+  width: 18px;
+  height: 18px;
 }
 .obniz {
-  background-image: url(../../images/sprite.png);
-  background-position: -72px 0px;
-  width: 24px;
-  height: 24px;
+  background-position: -54px 0px;
+  width: 18px;
+  height: 18px;
 }
 .react {
-  background-image: url(../../images/sprite.png);
-  background-position: -72px -24px;
-  width: 24px;
-  height: 24px;
+  background-position: -54px -18px;
+  width: 18px;
+  height: 18px;
 }
 .scss {
-  background-image: url(../../images/sprite.png);
-  background-position: -72px -48px;
-  width: 24px;
-  height: 24px;
+  background-position: -54px -36px;
+  width: 18px;
+  height: 18px;
 }
 .ts {
-  background-image: url(../../images/sprite.png);
-  background-position: 0px -72px;
-  width: 24px;
-  height: 24px;
+  background-position: 0px -54px;
+  width: 18px;
+  height: 18px;
 }
 .vue {
-  background-image: url(../../images/sprite.png);
-  background-position: -24px -72px;
-  width: 24px;
-  height: 24px;
+  background-position: -18px -54px;
+  width: 18px;
+  height: 18px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),
        (min-resolution: 192dpi) {
-  .css {
+  .icon {
     background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .electron {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .firebase {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .github {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .html {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .js {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .m5stack {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .nodejs {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .nuxt {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .obniz {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .react {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .scss {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .ts {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
-  }
-  .vue {
-    background-image: url(../../images/sprite@2x.png);
-    background-size: 96px 96px;
+    background-size: 72px 72px;
   }
 }
