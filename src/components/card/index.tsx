@@ -1,32 +1,31 @@
 import React from "react"
 import { IndexQuery } from "../../../types/graphql-types"
 import styles from "./style.module.scss"
-import SkillTag from "../skillTag"
+import SkillTagList from "../skillTagList"
 
-type Work = IndexQuery["job"]["edges"][number]["node"] // todo 妙な書き方。。
+type Work = IndexQuery["job"]["nodes"][number] // todo 妙な書き方。。
 
 const Card: React.FC<{ work: Work | void }> = ({ work }) => {
   if (!work) return null
   const { title, description, features, skills } = work
   return (
-    <div>
-      <div>
-        <h4>{title}</h4>
-        <ul>
-          {skills?.map((item, i) => (
-            <li key={item?.key ? item?.key : i}>
-              <SkillTag name={item?.key} label={item?.name} />
-            </li>
-          ))}
-        </ul>
+    <div className={styles.card}>
+      <div className={styles.left}>
+        <h4 className={styles.title}>{title}</h4>
+        {skills ? <SkillTagList skills={skills} /> : null}
       </div>
       <div>
         <p>{description?.description}</p>
-        <ul>
-          {features?.map((feature, i) => (
-            <li key={i}>{feature}</li>
-          ))}
-        </ul>
+        <dl>
+          <dt>機能</dt>
+          <dd>
+            <ul>
+              {features?.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
+            </ul>
+          </dd>
+        </dl>
       </div>
     </div>
   )

@@ -1,29 +1,6 @@
 @import "../../styles/vars.scss";
 
-.contents {
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-}
-
-.section {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.section + .section {
-  margin-top: 1.5em;
-  padding-top: 1.5em;
-  border-top: 1px $l-gray-lighten solid;
-}
-
-.skill-list {
-  &__ttl {
-    color: $d-gray;
-    font-size: 1.4rem;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-  }
-  & + & {
-    margin-top: 1.5em;
-  }
+.title {
+  font-size: 3rem;
+  margin-bottom: 1em;
 }

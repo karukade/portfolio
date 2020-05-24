@@ -30,6 +30,7 @@ $stick-out: 48px;
     background-color: #fff;
     transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
+    z-index: 1;
   }
 }
 
@@ -53,6 +54,6 @@ $stick-out: 48px;
 
 .main {
   @include mq{
-    padding: 20px 16px 20px;
+    padding: 24px 24px 24px;
   }
 }

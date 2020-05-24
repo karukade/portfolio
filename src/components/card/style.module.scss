@@ -1,20 +1,26 @@
-@import "../../styles/vars";
+@import "../../styles/vars.scss";
 
-.item {
-  position: relative;
-  padding-left: 1em;
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0.5em;
-    left: 0;
-    background-color: $l-gray;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-  }
-  & + & {
-    margin-top: 0.5em;
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  + & {
+    margin-top: 24px;
+  } 
+  @include mq{
+    display: flex;
   }
 }
+
+.left {
+  @include mq{
+    min-width: 260px;
+    margin-right: 24px;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+

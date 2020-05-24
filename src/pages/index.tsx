@@ -6,20 +6,42 @@ import Side from "../components/side"
 import Main from "../components/main"
 import Head from "../components/head"
 
-const Component: React.FC<{ data: IndexQuery }> = ({ data }) => (
-  <div>
-    <Head />
-    <Layout
-      side={
-        <Side
-          person={data.contentfulPerson}
-          skills={[data.skillHobby, data.skillJob]}
-        />
-      }
-      main={<Main works={{ hobby: data.hobby, job: data.job }} />}
-    />
-  </div>
-)
+const Component: React.FC<{ data: IndexQuery }> = ({ data }) => {
+  const {
+    contentfulPerson,
+    skillJob,
+    skillHobby,
+    hobby: { nodes: hobby },
+    job: { nodes: job },
+  } = data
+
+  const sideProps = {
+    person: contentfulPerson,
+    skills: {
+      hobby: skillHobby.nodes,
+      job: skillJob.nodes,
+    },
+  }
+
+  const MainProps = {
+    works: {
+      hobby,
+      job,
+    },
+  }
+
+  const layout = {
+    side: <Side {...sideProps} />,
+    main: <Main {...MainProps} />,
+  }
+
+  return (
+    <div>
+      <Head />
+      <Layout {...layout} />
+    </div>
+  )
+}
 
 export const query = graphql`
   query Index {
@@ -34,52 +56,23 @@ export const query = graphql`
     }
 
     skillHobby: allContentfulSkill(filter: { onlyHobby: { eq: true } }) {
-      edges {
-        node {
-          name
-          key
-        }
+      nodes {
+        ...Skill
       }
     }
-
     skillJob: allContentfulSkill(filter: { onlyHobby: { eq: false } }) {
-      edges {
-        node {
-          name
-          key
-        }
+      nodes {
+        ...Skill
       }
     }
-
     hobby: allContentfulPost(filter: { isJob: { eq: false } }) {
-      edges {
-        node {
-          title
-          description {
-            description
-          }
-          features
-          skills {
-            key
-            name
-          }
-        }
+      nodes {
+        ...Post
       }
     }
-
     job: allContentfulPost(filter: { isJob: { eq: true } }) {
-      edges {
-        node {
-          title
-          description {
-            description
-          }
-          features
-          skills {
-            key
-            name
-          }
-        }
+      nodes {
+        ...Post
       }
     }
   }

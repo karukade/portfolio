@@ -1,27 +1,19 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { IndexQuery } from "../../../types/graphql-types"
-import List from "../list"
-import SkillTag from "../skillTag"
-import ListInline from "../listInline"
+import SkillTagList from "../skillTagList"
 import TitleEmoji from "../ttlEmoji"
 import style from "./style.module.scss"
-import { IconNames } from "../icons"
 
 type PropsType = {
   person: IndexQuery["contentfulPerson"]
-  skills: [IndexQuery["skillHobby"], IndexQuery["skillJob"]]
+  skills: {
+    hobby: IndexQuery["skillHobby"]["nodes"]
+    job: IndexQuery["skillJob"]["nodes"]
+  }
 }
 
-const Side: React.FC<PropsType> = ({ person, skills }) => {
-  const [hobby, job] = skills.map(({ edges }) =>
-    edges.map(({ node }) => (
-      <SkillTag
-        key={node.key as string}
-        name={node.key as IconNames}
-        label={node.name as string}
-      />
-    ))
-  )
+const Side: React.FC<PropsType> = ({ person, skills: { hobby, job } }) => {
   return (
     <div>
       <div className={style.contents}>
@@ -35,13 +27,13 @@ const Side: React.FC<PropsType> = ({ person, skills }) => {
           <dl className={style.skillList}>
             <dt className={style.skillListTtl}>仕事</dt>
             <dd>
-              <ListInline items={job} />
+              <SkillTagList skills={job} />
             </dd>
           </dl>
           <dl className={style.skillList}>
             <dt className={style.skillListTtl}>趣味</dt>
             <dd>
-              <ListInline items={hobby} />
+              <SkillTagList skills={hobby} />
             </dd>
           </dl>
         </section>
@@ -55,3 +47,16 @@ const Side: React.FC<PropsType> = ({ person, skills }) => {
 }
 
 export default Side
+export const query = graphql`
+  fragment Post on ContentfulPost {
+    id
+    title
+    description {
+      description
+    }
+    features
+    skills {
+      ...Skill
+    }
+  }
+`

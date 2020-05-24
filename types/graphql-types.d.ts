@@ -4999,6 +4999,13 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type PostFragment = (
+  Pick<ContentfulPost, 'id' | 'title' | 'features'>
+  & { description?: Maybe<Pick<ContentfulPostDescriptionTextNode, 'description'>>, skills?: Maybe<Array<Maybe<SkillFragment>>> }
+);
+
+export type SkillFragment = Pick<ContentfulSkill, 'id' | 'name' | 'key'>;
+
 export type ImgTestQueryVariables = {};
 
 
@@ -5010,13 +5017,7 @@ export type IndexQueryVariables = {};
 export type IndexQuery = { contentfulPerson?: Maybe<(
     Pick<ContentfulPerson, 'name' | 'github' | 'birthday' | 'jobHistory'>
     & { shortBio?: Maybe<Pick<ContentfulPersonShortBioTextNode, 'shortBio'>> }
-  )>, skillHobby: { edges: Array<{ node: Pick<ContentfulSkill, 'name' | 'key'> }> }, skillJob: { edges: Array<{ node: Pick<ContentfulSkill, 'name' | 'key'> }> }, hobby: { edges: Array<{ node: (
-        Pick<ContentfulPost, 'title' | 'features'>
-        & { description?: Maybe<Pick<ContentfulPostDescriptionTextNode, 'description'>>, skills?: Maybe<Array<Maybe<Pick<ContentfulSkill, 'key' | 'name'>>>> }
-      ) }> }, job: { edges: Array<{ node: (
-        Pick<ContentfulPost, 'title' | 'features'>
-        & { description?: Maybe<Pick<ContentfulPostDescriptionTextNode, 'description'>>, skills?: Maybe<Array<Maybe<Pick<ContentfulSkill, 'key' | 'name'>>>> }
-      ) }> } };
+  )>, skillHobby: { nodes: Array<SkillFragment> }, skillJob: { nodes: Array<SkillFragment> }, hobby: { nodes: Array<PostFragment> }, job: { nodes: Array<PostFragment> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
