@@ -1,59 +1,61 @@
-@import "../../styles/vars.scss";
+$left: translateX(-100%);
+$right: translateX(100%);
+
+$slide-props: (
+  def: translateX(0),
+  prev: (
+    enter: $right,
+    exit: $left
+  ),
+  next: (
+    enter: $left,
+    exit: $right
+  )
+);
+
+@mixin transition($dur: 300ms, $easing: ease) {
+  transition: opacity $dur $easing, transform $dur $easing;
+}
+
+@mixin get-slide-props($dir: def, $action: def) {
+  @if ($dir == def and $action == def) {
+    opacity: 1;
+    transform: translateX(0);
+  } @else {
+    $props: map-get($slide-props, #{$dir});
+    opacity: 0;
+    transform: map-get($props, #{$action});
+  }
+}
 
 .exit {
-  opacity: 1;
-  transform: translateX(0);
+  @include get-slide-props;
+  &.next, &.prev {
+    &-exit-active {
+      @include transition
+    }
+  }
+  &.next-exit-active {
+    @include get-slide-props(next, exit);
+  }
+  &.prev-exit-active {
+    @include get-slide-props(prev, exit);
+  }
 }
 
-.enter-active,
-[class*=exit-active] {
-  transition: opacity 300ms, transform 300ms;
+.prev-enter {
+  @include get-slide-props(prev, enter);
 }
 
-.next {
+.next-enter {
+  @include get-slide-props(next, enter);
+}
+
+.next, .prev {
   &-enter {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  &-exit-active {
-    transform: translateX(100%);
-    opacity: 0;
+    &.enter-active {
+      @include get-slide-props;
+      @include transition
+    }
   }
 }
-
-.prev {
-  &-enter {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  &-exit-active {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-.enter-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-// .enter{
-//   opacity: 0;
-//   transform: translateX(-100%);
-// }
-// .enter-active{
-//   opacity: 1;
-//   transform: translateX(0%);
-// }
-// .exit{
-//   opacity: 1;
-//   transform: translateX(0%);
-// }
-// .exit-active{
-//   opacity: 0;
-//   transform: translateX(100%);
-// }
-// .enter-active,
-// .exit-active{
-//   transition: opacity 300ms, transform 300ms;
-// }
