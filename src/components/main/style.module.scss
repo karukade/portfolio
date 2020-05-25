@@ -4,3 +4,14 @@
   font-size: 3rem;
   margin-bottom: 1em;
 }
+
+.tab-panel-container {
+  position: relative;
+}
+
+.tab-panel {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}

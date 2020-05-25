@@ -1,54 +1,59 @@
 @import "../../styles/vars.scss";
 
-// .next {
-//   &-enter {
-//     transform: translateX(100%);
-//   }
-//   &-exit-active {
-//     transform: translateX(-100%);
-//   }
-// }
-
-// .prev {
-//   &-enter {
-//     transform: translateX(-100%);
-//   }
-//   &-exit-active {
-//     transform: translateX(100%);
-//   }
-// }
-
-// .enter-active {
-//   opacity: 1;
-//   transform: translateX(0);
-// }
-
-// .exit {
-//   opacity: 1;
-//   transform: translateX(0);
-// }
-
-// .enter-active,
-// [class*=exit-active] {
-//   transition: opacity 0.15s ease, transform 0.15s ease;
-// }
-
-.enter {
-  opacity: 0;
-}
-.exit-active {
-  opacity: 0;
-}
-
 .exit {
   opacity: 1;
+  transform: translateX(0);
+}
+
+.enter-active,
+[class*=exit-active] {
+  transition: opacity 300ms, transform 300ms;
+}
+
+.next {
+  &-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  &-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.prev {
+  &-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  &-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
 .enter-active {
   opacity: 1;
+  transform: translateX(0);
 }
 
-.enter-active,
-.exit-active {
-  transition: opacity 0.05s ease;
-}
+// .enter{
+//   opacity: 0;
+//   transform: translateX(-100%);
+// }
+// .enter-active{
+//   opacity: 1;
+//   transform: translateX(0%);
+// }
+// .exit{
+//   opacity: 1;
+//   transform: translateX(0%);
+// }
+// .exit-active{
+//   opacity: 0;
+//   transform: translateX(100%);
+// }
+// .enter-active,
+// .exit-active{
+//   transition: opacity 300ms, transform 300ms;
+// }

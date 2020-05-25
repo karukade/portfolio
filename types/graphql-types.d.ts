@@ -5006,11 +5006,6 @@ export type PostFragment = (
 
 export type SkillFragment = Pick<ContentfulSkill, 'id' | 'name' | 'key'>;
 
-export type ImgTestQueryVariables = {};
-
-
-export type ImgTestQuery = { allContentfulAsset: { edges: Array<{ node: { file?: Maybe<Pick<ContentfulAssetFile, 'url'>> } }> } };
-
 export type IndexQueryVariables = {};
 
 
