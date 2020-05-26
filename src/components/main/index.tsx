@@ -1,17 +1,28 @@
-import React, { useState, useCallback, useMemo, useRef, useEffect } from "react"
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from "react-transition-group"
-import classnames from "classnames"
-import { IndexQuery, PostFragment } from "../../../types/graphql-types"
-import styles from "./style.module.scss"
-import transitionStyles from "./transition.module.scss"
-import Card from "../card"
-import Tabs from "../tabs"
+import React, { useState, useCallback, useRef, useEffect } from "react"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import WorksList from "../worksList"
+import TabsContainer from "../tabsContainer"
+import Tab from "../tab"
 
-interface CSSTransitionClassNames {
+import styles from "./style.module.scss"
+import {
+  exit,
+  enterActive,
+  prevEnter,
+  prevExitActive,
+  nextEnter,
+  nextExitActive,
+} from "./transition.module.scss"
+
+import { PostFragment } from "../../../types/graphql-types"
+
+type PropsType = {
+  works: {
+    [K in "hobby" | "job"]: PostFragment[]
+  }
+}
+
+type CSSTransitionClassNames = {
   appear?: string
   appearActive?: string
   appearDone?: string
@@ -23,9 +34,6 @@ interface CSSTransitionClassNames {
   exitDone?: string
 }
 
-const getCards = (items: PostFragment[]) =>
-  items.map(item => (item.id ? <Card key={item.id} work={item} /> : null))
-
 const dynamicChildFactory = <T extends CSSTransitionClassNames>(
   classNames: T
 ) => (child: React.ReactElement<{ classNames: T }>) => {
@@ -34,36 +42,21 @@ const dynamicChildFactory = <T extends CSSTransitionClassNames>(
   })
 }
 
-const tabItems = ["💸趣味", "💰仕事（抜粋）"]
-
-const Main: React.FC<{
-  works: {
-    hobby: IndexQuery["hobby"]["nodes"]
-    job: IndexQuery["job"]["nodes"]
-  }
-}> = ({ works }) => {
+const Main: React.FC<PropsType> = ({ works }) => {
   if (!works) return null
   const { hobby, job } = works
   const [index, setIndex] = useState(0)
   const prev = useRef<number | null>(null)
+  const toPrev = prev.current === null ? false : prev.current > index
   const transitionClass = {
-    enter:
-      prev.current > index
-        ? transitionStyles.prevEnter
-        : transitionStyles.nextEnter,
-    enterActive: transitionStyles.enterActive,
-    exit: transitionStyles.exit,
-    exitActive:
-      prev.current > index
-        ? transitionStyles.prevExitActive
-        : transitionStyles.nextExitActive,
+    enter: toPrev ? prevEnter : nextEnter,
+    enterActive: enterActive,
+    exit: exit,
+    exitActive: toPrev ? prevExitActive : nextExitActive,
   }
 
-  const hobbyWorks = useMemo(() => getCards(hobby), [hobby])
-  const jobWorks = useMemo(() => getCards(job), [job])
-
-  const onClick = useCallback((i: number) => {
-    setIndex(i)
+  const onClick = useCallback((index: number) => {
+    setIndex(index)
   }, [])
 
   useEffect(() => {
@@ -73,16 +66,27 @@ const Main: React.FC<{
   return (
     <div>
       <h2 className={styles.title}>つくったもの</h2>
-      <Tabs items={tabItems} onClick={onClick} value={index} />
+      <TabsContainer>
+        <Tab value={0} currentValue={index} onClick={onClick}>
+          💸趣味
+        </Tab>
+        <Tab value={1} currentValue={index} onClick={onClick}>
+          💰仕事（抜粋）
+        </Tab>
+      </TabsContainer>
       <TransitionGroup
         className={styles.tabPanelContainer}
         childFactory={dynamicChildFactory(transitionClass)}
       >
         <CSSTransition key={index} classNames={transitionClass} timeout={300}>
           {index === 0 ? (
-            <div className={styles.tabPanel}>{hobbyWorks}</div>
+            <div className={styles.tabPanel}>
+              <WorksList works={hobby} />
+            </div>
           ) : (
-            <div className={styles.tabPanel}>{jobWorks}</div>
+            <div className={styles.tabPanel}>
+              <WorksList works={job} />
+            </div>
           )}
         </CSSTransition>
       </TransitionGroup>

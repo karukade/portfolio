@@ -1,6 +1,8 @@
 @import "../../styles/vars.scss";
 
 .tab {
+  border: none;
+  background-color: transparent;
   padding-bottom: 14px;
   position: relative;
   min-width: 150px;
@@ -22,13 +24,7 @@
       opacity: 1;
     }
   }
-}
-
-.tabs {
-  display: inline-flex;
-}
-
-.tabs-wrap {
-  border-bottom: 1px solid $l-gray;
-  margin-bottom: 24px;
+  &:focus {
+    outline: none;
+  }
 }

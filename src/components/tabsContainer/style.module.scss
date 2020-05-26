@@ -1,0 +1,10 @@
+@import "../../styles/vars.scss";
+
+.tabs {
+  display: inline-flex;
+}
+
+.tabs-wrap {
+  border-bottom: 1px solid $l-gray;
+  margin-bottom: 24px;
+}
