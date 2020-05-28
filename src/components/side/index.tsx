@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 import { IndexQuery } from "../../../types/graphql-types"
 import SkillTagList from "../skillTagList"
 import TitleEmoji from "../ttlEmoji"
@@ -18,8 +17,7 @@ const Side: React.FC<PropsType> = ({ person, skills: { hobby, job } }) => {
     <div>
       <div className={style.contents}>
         <div className={style.section}>
-          <span className={style.emoji}>👶</span>
-          {person?.birthday}
+          <TitleEmoji emoji="🦑">HELLOWORLD</TitleEmoji>
           <p>{person?.shortBio?.shortBio}</p>
         </div>
         <section className={style.section}>
@@ -47,16 +45,3 @@ const Side: React.FC<PropsType> = ({ person, skills: { hobby, job } }) => {
 }
 
 export default Side
-export const query = graphql`
-  fragment Post on ContentfulPost {
-    id
-    title
-    description {
-      description
-    }
-    features
-    skills {
-      ...Skill
-    }
-  }
-`

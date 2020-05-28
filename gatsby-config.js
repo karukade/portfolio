@@ -1,4 +1,3 @@
-const path = require("path")
 require('dotenv').config()
 /**
  * Configure your Gatsby site with this file.
@@ -29,6 +28,20 @@ module.exports = {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: `types/graphql-types.d.ts`
+      }
+    },
+    {
+      resolve: `@contentful/gatsby-transformer-contentful-richtext`,
+      options: {
+        renderOptions: {
+          renderNode: {
+            [INLINES.HYPERLINK]: (node, children) => {
+              const {content, data: {uri}} = node
+              const {value} = content[0]
+              return `<a href="${uri}">${value}</a>`
+            }
+          }
+        }
       }
     }
   ],

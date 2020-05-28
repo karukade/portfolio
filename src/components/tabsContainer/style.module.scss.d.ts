@@ -1,2 +1,2 @@
 export const tabs: string;
-export const tabsWrap: string;
+export const tabsContainer: string;

@@ -4,79 +4,79 @@
 }
 .css {
   background-position: 0px 0px;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
 }
 .electron {
-  background-position: -18px 0px;
-  width: 18px;
-  height: 18px;
+  background-position: -15px 0px;
+  width: 15px;
+  height: 15px;
 }
 .firebase {
-  background-position: 0px -18px;
-  width: 18px;
-  height: 18px;
+  background-position: 0px -15px;
+  width: 15px;
+  height: 15px;
 }
 .github {
-  background-position: -18px -18px;
-  width: 18px;
-  height: 18px;
+  background-position: -15px -15px;
+  width: 15px;
+  height: 15px;
 }
 .html {
-  background-position: -36px 0px;
-  width: 18px;
-  height: 18px;
+  background-position: -30px 0px;
+  width: 15px;
+  height: 15px;
 }
 .js {
-  background-position: -36px -18px;
-  width: 18px;
-  height: 18px;
+  background-position: -30px -15px;
+  width: 15px;
+  height: 15px;
 }
 .m5stack {
-  background-position: 0px -36px;
-  width: 18px;
-  height: 18px;
+  background-position: 0px -30px;
+  width: 15px;
+  height: 15px;
 }
 .nodejs {
-  background-position: -18px -36px;
-  width: 18px;
-  height: 18px;
+  background-position: -15px -30px;
+  width: 15px;
+  height: 15px;
 }
 .nuxt {
-  background-position: -36px -36px;
-  width: 18px;
-  height: 18px;
+  background-position: -30px -30px;
+  width: 15px;
+  height: 15px;
 }
 .obniz {
-  background-position: -54px 0px;
-  width: 18px;
-  height: 18px;
+  background-position: -45px 0px;
+  width: 15px;
+  height: 15px;
 }
 .react {
-  background-position: -54px -18px;
-  width: 18px;
-  height: 18px;
+  background-position: -45px -15px;
+  width: 15px;
+  height: 15px;
 }
 .scss {
-  background-position: -54px -36px;
-  width: 18px;
-  height: 18px;
+  background-position: -45px -30px;
+  width: 15px;
+  height: 15px;
 }
 .ts {
-  background-position: 0px -54px;
-  width: 18px;
-  height: 18px;
+  background-position: 0px -45px;
+  width: 15px;
+  height: 15px;
 }
 .vue {
-  background-position: -18px -54px;
-  width: 18px;
-  height: 18px;
+  background-position: -15px -45px;
+  width: 15px;
+  height: 15px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),
        (min-resolution: 192dpi) {
   .icon {
     background-image: url(../../images/sprite@2x.png);
-    background-size: 72px 72px;
+    background-size: 60px 60px;
   }
 }

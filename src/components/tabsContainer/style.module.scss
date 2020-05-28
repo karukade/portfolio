@@ -2,9 +2,13 @@
 
 .tabs {
   display: inline-flex;
+  > * + * {
+    margin-left: 20px;
+  }
 }
 
-.tabs-wrap {
+.tabs-container {
+  position: relative;
   border-bottom: 1px solid $l-gray;
   margin-bottom: 24px;
 }

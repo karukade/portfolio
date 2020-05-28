@@ -1,5 +1,7 @@
-$left: translateX(-100%);
-$right: translateX(100%);
+@import "../../styles/vars.scss";
+
+$left: translateX(100%);
+$right: translateX(-100%);
 
 $slide-props: (
   def: translateX(0),
@@ -13,7 +15,7 @@ $slide-props: (
   )
 );
 
-@mixin transition($dur: 300ms, $easing: ease) {
+@mixin transition($dur: 300ms, $easing: $main-ease) {
   transition: opacity $dur $easing, transform $dur $easing;
 }
 

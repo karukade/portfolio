@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from "react"
+import { graphql } from "gatsby"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import WorksList from "../worksList"
 import TabsContainer from "../tabsContainer"
@@ -36,10 +37,11 @@ type CSSTransitionClassNames = {
 
 const dynamicChildFactory = <T extends CSSTransitionClassNames>(
   classNames: T
-) => (child: React.ReactElement<{ classNames: T }>) => {
-  return React.cloneElement(child, {
-    classNames,
-  })
+) => {
+  return (child: React.ReactElement<{ classNames: T }>) =>
+    React.cloneElement(child, {
+      classNames,
+    })
 }
 
 const Main: React.FC<PropsType> = ({ works }) => {
@@ -66,12 +68,14 @@ const Main: React.FC<PropsType> = ({ works }) => {
   return (
     <div>
       <h2 className={styles.title}>つくったもの</h2>
-      <TabsContainer>
-        <Tab value={0} currentValue={index} onClick={onClick}>
-          💸趣味
+      <TabsContainer currentIndex={index}>
+        <Tab index={0} currentIndex={index} onClick={onClick}>
+          <span>💸</span>
+          <span>趣味</span>
         </Tab>
-        <Tab value={1} currentValue={index} onClick={onClick}>
-          💰仕事（抜粋）
+        <Tab index={1} currentIndex={index} onClick={onClick}>
+          <span>💰</span>
+          <span>仕事から抜粋</span>
         </Tab>
       </TabsContainer>
       <TransitionGroup
@@ -95,3 +99,19 @@ const Main: React.FC<PropsType> = ({ works }) => {
 }
 
 export default Main
+
+export const query = graphql`
+  fragment Post on ContentfulPost {
+    id
+    title
+    github
+    site
+    description {
+      description
+    }
+    features
+    skills {
+      ...Skill
+    }
+  }
+`

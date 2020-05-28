@@ -2,25 +2,25 @@ import React, { useCallback } from "react"
 import classnames from "classnames"
 import styles from "./style.module.scss"
 
-type ValueType = number | string
+type IndexType = number
 
 type PropsType = {
-  value: ValueType
-  currentValue: ValueType
-  onClick: (value: ValueType) => void
+  index: IndexType
+  currentIndex: IndexType
+  onClick: (value: IndexType) => void
 }
 
 const Tab: React.FC<PropsType> = ({
-  value,
-  currentValue,
+  index,
+  currentIndex,
   onClick,
   children,
 }) => {
   const handleClick = useCallback(() => {
-    onClick(value)
-  }, [value, onClick])
+    onClick(index)
+  }, [index, onClick])
   const tabStyle = classnames(styles.tab, {
-    [styles.active]: value === currentValue,
+    [styles.active]: index === currentIndex,
   })
   return (
     <button className={tabStyle} onClick={handleClick}>

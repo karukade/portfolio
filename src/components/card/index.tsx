@@ -2,6 +2,8 @@ import React from "react"
 import { IndexQuery } from "../../../types/graphql-types"
 import styles from "./style.module.scss"
 import SkillTagList from "../skillTagList"
+import List from "../list"
+import Description from "../description"
 
 type Work = IndexQuery["job"]["nodes"][number] // todo 妙な書き方。。
 
@@ -15,14 +17,16 @@ const Card: React.FC<{ work: Work | void }> = ({ work }) => {
         {skills ? <SkillTagList skills={skills} /> : null}
       </div>
       <div>
-        <p>{description?.description}</p>
-        <dl>
-          <dt>機能</dt>
-          <dd>
+        {description?.description ? (
+          <Description json={description.description} />
+        ) : null}
+        <dl className={styles.features}>
+          <dt className={styles.featuresTtl}>
+            <span>⚙</span>機能
+          </dt>
+          <dd className={styles.featuresContents}>
             <ul>
-              {features?.map((feature, i) => (
-                <li key={i}>{feature}</li>
-              ))}
+              <List items={features} />
             </ul>
           </dd>
         </dl>

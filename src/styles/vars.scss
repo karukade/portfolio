@@ -1,12 +1,13 @@
 $font-family: dnp-shuei-gothic-kin-std, sans-serif;
-$font-size: 1.5rem;
+$font-size: 1.6rem;
 $line-height: 1.8;
 $primary: #181C26;
 $base-gray: #F9F9F9;
 $l-gray: #E3E3E3;
 $l-gray-lighten: lighten($l-gray, 5%);
 $d-gray: rgb(116, 115, 115);
-$font-color: #181C26;
+$font-color: #414756;
+$main-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
 $radius: (
   l: 16px,

@@ -4,12 +4,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  // background-color: $l-gray-lighten;
+  background-color: #f7f7f7;
   border-radius: 180px;
-  padding: 4px 6px;
+  padding: 4px 8px;
   font-size: 1.2rem;
   font-weight: bold;
   > i {
-    margin-right: 4px;
+    margin-right: 8px;
   }
 }

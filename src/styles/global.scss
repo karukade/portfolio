@@ -11,7 +11,7 @@ body {
   color: $font-color;
 }
 
-a {
+a,button {
   color: $font-color;
 }
 
@@ -20,7 +20,7 @@ img {
   height: auto;
 }
 
-h1, h2, h3, h4, ul,dl,dd {
+h1, h2, h3, h4, ul,dl,dd,p {
   margin: 0;
 }
 
