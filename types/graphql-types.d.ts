@@ -2588,6 +2588,7 @@ export type ContentfulPostDescriptionRichTextNode = Node & {
   content?: Maybe<Array<Maybe<ContentfulPostDescriptionRichTextNodeContent>>>;
   description?: Maybe<Scalars['String']>;
   json?: Maybe<Scalars['JSON']>;
+  childContentfulRichText?: Maybe<ContentfulRichText>;
 };
 
 export type ContentfulPostDescriptionRichTextNodeConnection = {
@@ -2769,7 +2770,47 @@ export type ContentfulPostDescriptionRichTextNodeFieldsEnum =
   | 'content___content___content___nodeType'
   | 'content___content___content___value'
   | 'description'
-  | 'json';
+  | 'json'
+  | 'childContentfulRichText___id'
+  | 'childContentfulRichText___parent___id'
+  | 'childContentfulRichText___parent___parent___id'
+  | 'childContentfulRichText___parent___parent___children'
+  | 'childContentfulRichText___parent___children'
+  | 'childContentfulRichText___parent___children___id'
+  | 'childContentfulRichText___parent___children___children'
+  | 'childContentfulRichText___parent___internal___content'
+  | 'childContentfulRichText___parent___internal___contentDigest'
+  | 'childContentfulRichText___parent___internal___description'
+  | 'childContentfulRichText___parent___internal___fieldOwners'
+  | 'childContentfulRichText___parent___internal___ignoreType'
+  | 'childContentfulRichText___parent___internal___mediaType'
+  | 'childContentfulRichText___parent___internal___owner'
+  | 'childContentfulRichText___parent___internal___type'
+  | 'childContentfulRichText___children'
+  | 'childContentfulRichText___children___id'
+  | 'childContentfulRichText___children___parent___id'
+  | 'childContentfulRichText___children___parent___children'
+  | 'childContentfulRichText___children___children'
+  | 'childContentfulRichText___children___children___id'
+  | 'childContentfulRichText___children___children___children'
+  | 'childContentfulRichText___children___internal___content'
+  | 'childContentfulRichText___children___internal___contentDigest'
+  | 'childContentfulRichText___children___internal___description'
+  | 'childContentfulRichText___children___internal___fieldOwners'
+  | 'childContentfulRichText___children___internal___ignoreType'
+  | 'childContentfulRichText___children___internal___mediaType'
+  | 'childContentfulRichText___children___internal___owner'
+  | 'childContentfulRichText___children___internal___type'
+  | 'childContentfulRichText___internal___content'
+  | 'childContentfulRichText___internal___contentDigest'
+  | 'childContentfulRichText___internal___description'
+  | 'childContentfulRichText___internal___fieldOwners'
+  | 'childContentfulRichText___internal___ignoreType'
+  | 'childContentfulRichText___internal___mediaType'
+  | 'childContentfulRichText___internal___owner'
+  | 'childContentfulRichText___internal___type'
+  | 'childContentfulRichText___html'
+  | 'childContentfulRichText___timeToRead';
 
 export type ContentfulPostDescriptionRichTextNodeFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2780,6 +2821,7 @@ export type ContentfulPostDescriptionRichTextNodeFilterInput = {
   content?: Maybe<ContentfulPostDescriptionRichTextNodeContentFilterListInput>;
   description?: Maybe<StringQueryOperatorInput>;
   json?: Maybe<JsonQueryOperatorInput>;
+  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
 };
 
 export type ContentfulPostDescriptionRichTextNodeGroupConnection = {
@@ -3100,6 +3142,22 @@ export type ContentfulPostFieldsEnum =
   | 'description___content___content___content'
   | 'description___description'
   | 'description___json'
+  | 'description___childContentfulRichText___id'
+  | 'description___childContentfulRichText___parent___id'
+  | 'description___childContentfulRichText___parent___children'
+  | 'description___childContentfulRichText___children'
+  | 'description___childContentfulRichText___children___id'
+  | 'description___childContentfulRichText___children___children'
+  | 'description___childContentfulRichText___internal___content'
+  | 'description___childContentfulRichText___internal___contentDigest'
+  | 'description___childContentfulRichText___internal___description'
+  | 'description___childContentfulRichText___internal___fieldOwners'
+  | 'description___childContentfulRichText___internal___ignoreType'
+  | 'description___childContentfulRichText___internal___mediaType'
+  | 'description___childContentfulRichText___internal___owner'
+  | 'description___childContentfulRichText___internal___type'
+  | 'description___childContentfulRichText___html'
+  | 'description___childContentfulRichText___timeToRead'
   | 'description1___id'
   | 'description1___parent___id'
   | 'description1___parent___parent___id'
@@ -3198,6 +3256,22 @@ export type ContentfulPostFieldsEnum =
   | 'childContentfulPostDescriptionRichTextNode___content___content___content'
   | 'childContentfulPostDescriptionRichTextNode___description'
   | 'childContentfulPostDescriptionRichTextNode___json'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___id'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___parent___id'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___parent___children'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___children'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___children___id'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___children___children'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___content'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___contentDigest'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___description'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___fieldOwners'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___ignoreType'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___mediaType'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___owner'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___internal___type'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___html'
+  | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___timeToRead'
   | 'childContentfulPostDescription1TextNode___id'
   | 'childContentfulPostDescription1TextNode___parent___id'
   | 'childContentfulPostDescription1TextNode___parent___parent___id'
@@ -3351,6 +3425,155 @@ export type ContentfulResolutionsFilterInput = {
   srcSet?: Maybe<StringQueryOperatorInput>;
   srcWebp?: Maybe<StringQueryOperatorInput>;
   srcSetWebp?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulRichText = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  html?: Maybe<Scalars['String']>;
+  timeToRead?: Maybe<Scalars['Int']>;
+};
+
+export type ContentfulRichTextConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulRichTextEdge>;
+  nodes: Array<ContentfulRichText>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulRichTextGroupConnection>;
+};
+
+
+export type ContentfulRichTextConnectionDistinctArgs = {
+  field: ContentfulRichTextFieldsEnum;
+};
+
+
+export type ContentfulRichTextConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulRichTextFieldsEnum;
+};
+
+export type ContentfulRichTextEdge = {
+  next?: Maybe<ContentfulRichText>;
+  node: ContentfulRichText;
+  previous?: Maybe<ContentfulRichText>;
+};
+
+export type ContentfulRichTextFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'html'
+  | 'timeToRead';
+
+export type ContentfulRichTextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  html?: Maybe<StringQueryOperatorInput>;
+  timeToRead?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ContentfulRichTextGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulRichTextEdge>;
+  nodes: Array<ContentfulRichText>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulRichTextSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulRichTextFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type ContentfulSizes = {
@@ -3837,6 +4060,10 @@ export type ContentfulSkillFieldsEnum =
   | 'post___description___content___content'
   | 'post___description___description'
   | 'post___description___json'
+  | 'post___description___childContentfulRichText___id'
+  | 'post___description___childContentfulRichText___children'
+  | 'post___description___childContentfulRichText___html'
+  | 'post___description___childContentfulRichText___timeToRead'
   | 'post___description1___id'
   | 'post___description1___parent___id'
   | 'post___description1___parent___children'
@@ -3880,6 +4107,10 @@ export type ContentfulSkillFieldsEnum =
   | 'post___childContentfulPostDescriptionRichTextNode___content___content'
   | 'post___childContentfulPostDescriptionRichTextNode___description'
   | 'post___childContentfulPostDescriptionRichTextNode___json'
+  | 'post___childContentfulPostDescriptionRichTextNode___childContentfulRichText___id'
+  | 'post___childContentfulPostDescriptionRichTextNode___childContentfulRichText___children'
+  | 'post___childContentfulPostDescriptionRichTextNode___childContentfulRichText___html'
+  | 'post___childContentfulPostDescriptionRichTextNode___childContentfulRichText___timeToRead'
   | 'post___childContentfulPostDescription1TextNode___id'
   | 'post___childContentfulPostDescription1TextNode___parent___id'
   | 'post___childContentfulPostDescription1TextNode___parent___children'
@@ -4675,6 +4906,8 @@ export type Query = {
   allContentfulAsset: ContentfulAssetConnection;
   contentfulSkill?: Maybe<ContentfulSkill>;
   allContentfulSkill: ContentfulSkillConnection;
+  contentfulRichText?: Maybe<ContentfulRichText>;
+  allContentfulRichText: ContentfulRichTextConnection;
   contentfulPostDescription1TextNode?: Maybe<ContentfulPostDescription1TextNode>;
   allContentfulPostDescription1TextNode: ContentfulPostDescription1TextNodeConnection;
   contentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNode>;
@@ -4894,6 +5127,24 @@ export type QueryAllContentfulSkillArgs = {
 };
 
 
+export type QueryContentfulRichTextArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  html?: Maybe<StringQueryOperatorInput>;
+  timeToRead?: Maybe<IntQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulRichTextArgs = {
+  filter?: Maybe<ContentfulRichTextFilterInput>;
+  sort?: Maybe<ContentfulRichTextSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulPostDescription1TextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -4920,6 +5171,7 @@ export type QueryContentfulPostDescriptionRichTextNodeArgs = {
   content?: Maybe<ContentfulPostDescriptionRichTextNodeContentFilterListInput>;
   description?: Maybe<StringQueryOperatorInput>;
   json?: Maybe<JsonQueryOperatorInput>;
+  childContentfulRichText?: Maybe<ContentfulRichTextFilterInput>;
 };
 
 
@@ -5987,7 +6239,7 @@ export type StringQueryOperatorInput = {
 
 export type PostFragment = (
   Pick<ContentfulPost, 'id' | 'title' | 'github' | 'site' | 'features'>
-  & { description?: Maybe<Pick<ContentfulPostDescriptionRichTextNode, 'description'>>, skills?: Maybe<Array<Maybe<SkillFragment>>> }
+  & { description?: Maybe<{ childContentfulRichText?: Maybe<Pick<ContentfulRichText, 'html'>> }>, skills?: Maybe<Array<Maybe<SkillFragment>>> }
 );
 
 export type SkillFragment = Pick<ContentfulSkill, 'id' | 'name' | 'key'>;

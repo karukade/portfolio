@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { INLINES } = require("@contentful/rich-text-types")
 /**
  * Configure your Gatsby site with this file.
  *
@@ -31,6 +32,27 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-svgr`
-    }
+    },
+    {
+      resolve: '@contentful/gatsby-transformer-contentful-richtext',
+      options: {
+        renderOptions: {
+          /*
+           * Defines custom html string for each node type like heading, embedded entries etc..
+           */
+          renderNode: {
+            // Example
+            [INLINES.HYPERLINK]: node => {
+              const {
+                content,
+                data: { uri },
+              } = node
+              const { value } = content[0]
+              return `<a href="${uri}" target="_blank">${value}</a>`
+            },
+          },
+        },
+      },
+    },
   ],
 }

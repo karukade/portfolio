@@ -11,11 +11,12 @@ body {
   color: $font-color;
 }
 
-a,button {
+button {
   color: $font-color;
 }
 
 a {
+  color: $link;
   text-decoration: none;
 }
 

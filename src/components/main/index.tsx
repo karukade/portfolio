@@ -107,7 +107,9 @@ export const query = graphql`
     github
     site
     description {
-      description
+      childContentfulRichText {
+        html
+      }
     }
     features
     skills {

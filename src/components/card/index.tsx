@@ -5,13 +5,13 @@ import SkillTagList from "../skillTagList"
 import Btn from "../btn"
 import BtnList from "../btnList"
 import List from "../list"
-import Description from "../description"
 
 type Work = PostFragment
 
 const Card: React.FC<{ work: Work | void }> = ({ work }) => {
   if (!work) return null
   const { title, description, features, skills, github, site } = work
+  const descHtml = description?.childContentfulRichText?.html
   const exLinks =
     github || site ? (
       <BtnList>
@@ -34,8 +34,8 @@ const Card: React.FC<{ work: Work | void }> = ({ work }) => {
         {skills ? <SkillTagList skills={skills} /> : null}
       </div>
       <div>
-        {description?.description ? (
-          <Description json={description.description} />
+        {descHtml ? (
+          <div dangerouslySetInnerHTML={{ __html: descHtml }}></div>
         ) : null}
         <dl className={styles.features}>
           <dt className={styles.featuresTtl}>
