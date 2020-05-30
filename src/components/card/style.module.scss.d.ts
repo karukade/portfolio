@@ -4,3 +4,4 @@ export const title: string;
 export const features: string;
 export const featuresTtl: string;
 export const featuresContents: string;
+export const thumbnail: string;

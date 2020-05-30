@@ -115,5 +115,11 @@ export const query = graphql`
     skills {
       ...Skill
     }
+    video
+    img {
+      fluid(maxWidth: 1180, resizingBehavior: NO_CHANGE) {
+        ...GatsbyContentfulFluid
+      }
+    }
   }
 `

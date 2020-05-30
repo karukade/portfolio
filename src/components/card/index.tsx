@@ -5,12 +5,20 @@ import SkillTagList from "../skillTagList"
 import Btn from "../btn"
 import BtnList from "../btnList"
 import List from "../list"
+import Thumbnail from "../thumbnail"
 
-type Work = PostFragment
-
-const Card: React.FC<{ work: Work | void }> = ({ work }) => {
+const Card: React.FC<{ work: PostFragment | void }> = ({ work }) => {
   if (!work) return null
-  const { title, description, features, skills, github, site } = work
+  const {
+    title,
+    description,
+    features,
+    skills,
+    github,
+    site,
+    img,
+    video,
+  } = work
   const descHtml = description?.childContentfulRichText?.html
   const exLinks =
     github || site ? (
@@ -32,6 +40,11 @@ const Card: React.FC<{ work: Work | void }> = ({ work }) => {
       <div className={styles.left}>
         <h4 className={styles.title}>{title}</h4>
         {skills ? <SkillTagList skills={skills} /> : null}
+        {img || video ? (
+          <div className={styles.thumbnail}>
+            <Thumbnail video={video} img={img} />
+          </div>
+        ) : null}
       </div>
       <div>
         {descHtml ? (
