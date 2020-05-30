@@ -37,11 +37,7 @@ module.exports = {
       resolve: '@contentful/gatsby-transformer-contentful-richtext',
       options: {
         renderOptions: {
-          /*
-           * Defines custom html string for each node type like heading, embedded entries etc..
-           */
           renderNode: {
-            // Example
             [INLINES.HYPERLINK]: node => {
               const {
                 content,
