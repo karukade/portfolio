@@ -1,15 +1,32 @@
 import React from "react"
-import { IndexQuery } from "../../../types/graphql-types"
+import { PostFragment } from "../../../types/graphql-types"
 import styles from "./style.module.scss"
 import SkillTagList from "../skillTagList"
+import Btn from "../btn"
+import BtnList from "../btnList"
 import List from "../list"
 import Description from "../description"
 
-type Work = IndexQuery["job"]["nodes"][number] // todo 妙な書き方。。
+type Work = PostFragment
 
 const Card: React.FC<{ work: Work | void }> = ({ work }) => {
   if (!work) return null
-  const { title, description, features, skills } = work
+  const { title, description, features, skills, github, site } = work
+  const exLinks =
+    github || site ? (
+      <BtnList>
+        {github ? (
+          <Btn href={github} target="_blank" icon="github">
+            Github
+          </Btn>
+        ) : null}
+        {site ? (
+          <Btn href={site} target="_blank">
+            Site
+          </Btn>
+        ) : null}
+      </BtnList>
+    ) : null
   return (
     <div className={styles.card}>
       <div className={styles.left}>
@@ -30,6 +47,7 @@ const Card: React.FC<{ work: Work | void }> = ({ work }) => {
             </ul>
           </dd>
         </dl>
+        {exLinks}
       </div>
     </div>
   )

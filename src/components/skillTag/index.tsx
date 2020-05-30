@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./style.module.scss"
-import Icon, { IconNames } from "../icons"
+import Icon, { IconNames } from "../skillIcons"
 
 const SkillTag: React.FC<{
   name: IconNames

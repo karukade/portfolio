@@ -1,5 +1,5 @@
 import React from "react"
-import ArrowIcon from "../../images/ico-arrow.svg"
+import { ReactComponent as ArrowIcon } from "../../images/ico-arrow.svg"
 import style from "./style.module.scss"
 import classnames from "classnames"
 
@@ -12,9 +12,7 @@ const Header: React.FC<{ onToggle: () => void; expand: boolean }> = props => (
         [style.close]: !props.expand,
       })}
     >
-      <svg viewBox={ArrowIcon.viewBox}>
-        <use xlinkHref={`#${ArrowIcon.id}`} />
-      </svg>
+      <ArrowIcon />
     </span>
   </header>
 )

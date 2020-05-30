@@ -1,6 +1,6 @@
 import React from "react"
-import Icon from "../components/icons"
-import styles from "../components/icons/style.module.scss"
+import Icon from "../components/skillIcons"
+import styles from "../components/skillIcons/style.module.scss"
 
 const Component: React.FC = () => {
   type Keys = keyof typeof styles

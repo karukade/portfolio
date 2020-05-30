@@ -14,7 +14,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-scss-typescript`,
-    `gatsby-plugin-svg-sprite`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     {
@@ -31,18 +30,7 @@ module.exports = {
       }
     },
     {
-      resolve: `@contentful/gatsby-transformer-contentful-richtext`,
-      options: {
-        renderOptions: {
-          renderNode: {
-            [INLINES.HYPERLINK]: (node, children) => {
-              const {content, data: {uri}} = node
-              const {value} = content[0]
-              return `<a href="${uri}">${value}</a>`
-            }
-          }
-        }
-      }
+      resolve: `gatsby-plugin-svgr`
     }
   ],
 }

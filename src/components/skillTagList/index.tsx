@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { SkillFragment, Maybe } from "../../../types/graphql-types"
 import styles from "./style.module.scss"
 import SkillTag from "../skillTag"
-import { IconNames } from "../icons"
+import { IconNames } from "../skillIcons"
 
 type Skills = Maybe<SkillFragment>[]
 const SkillTagList: React.FC<{

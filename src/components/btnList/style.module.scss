@@ -1,0 +1,17 @@
+@import "../../styles/vars.scss";
+
+.btn-list {
+  margin-top: 1.5em;
+  display: flex;
+  > * + * {
+    margin-left: 1em;
+  }
+  > * {
+    width: 50%;
+  }
+  @include mq {
+    > * {
+      width: auto;
+    }
+  }
+}

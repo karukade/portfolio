@@ -1,10 +1,7 @@
-//svg-sprite-loaderを通した後の値
+// for svgr
+
+// type Maybe<T> = T | null
+
 declare module "*.svg" {
-  const content: {
-    id: string
-    viewBox: string
-    content?: string
-    url?: string
-  }
-  export default content
+  export const ReactComponent: React.FC
 }
