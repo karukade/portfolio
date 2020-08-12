@@ -104,8 +104,6 @@ export const query = graphql`
   fragment Post on ContentfulPost {
     id
     title
-    github
-    site
     description {
       childContentfulRichText {
         html
@@ -117,8 +115,15 @@ export const query = graphql`
     }
     video
     img {
-      fluid(maxWidth: 1180, resizingBehavior: NO_CHANGE) {
+      fluid(maxWidth: 1180) {
         ...GatsbyContentfulFluid
+      }
+    }
+    links
+    fields {
+      parsedLinks {
+        link
+        value
       }
     }
   }

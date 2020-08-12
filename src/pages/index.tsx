@@ -65,12 +65,18 @@ export const query = graphql`
         ...Skill
       }
     }
-    hobby: allContentfulPost(filter: { isJob: { eq: false } }) {
+    hobby: allContentfulPost(
+      filter: { isJob: { eq: false } }
+      sort: { fields: updatedAt, order: DESC }
+    ) {
       nodes {
         ...Post
       }
     }
-    job: allContentfulPost(filter: { isJob: { eq: true } }) {
+    job: allContentfulPost(
+      filter: { isJob: { eq: true } }
+      sort: { fields: updatedAt, order: DESC }
+    ) {
       nodes {
         ...Post
       }

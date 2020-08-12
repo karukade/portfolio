@@ -17,7 +17,7 @@ const Side: React.FC<PropsType> = ({ person, skills: { hobby, job } }) => {
     <div>
       <div className={style.contents}>
         <div className={style.section}>
-          <TitleEmoji emoji="🦑">HELLOWORLD</TitleEmoji>
+          <TitleEmoji emoji="🦑">はじめまして</TitleEmoji>
           <p>{person?.shortBio?.shortBio}</p>
         </div>
         <section className={style.section}>

@@ -1,5 +1,8 @@
 import React from "react"
-import { PostFragment } from "../../../types/graphql-types"
+import {
+  PostFragment,
+  ContentfulPostFieldsParsedLinks,
+} from "../../../types/graphql-types"
 import styles from "./style.module.scss"
 import SkillTagList from "../skillTagList"
 import Btn from "../btn"
@@ -7,42 +10,33 @@ import BtnList from "../btnList"
 import List from "../list"
 import Thumbnail from "../thumbnail"
 
+const createExLinks = (links: ContentfulPostFieldsParsedLinks[]) => {
+  const btns = links.map((link, idx) => {
+    const { value, link: url } = link
+    return value && url ? (
+      <Btn key={idx} href={url} target="_blank" icon={value}>
+        {value}
+      </Btn>
+    ) : null
+  })
+  return <BtnList>{btns}</BtnList>
+}
+
 const Card: React.FC<{ work: PostFragment | void }> = ({ work }) => {
   if (!work) return null
-  const {
-    title,
-    description,
-    features,
-    skills,
-    github,
-    site,
-    img,
-    video,
-  } = work
+  const { title, description, features, skills, video, img, fields } = work
   const descHtml = description?.childContentfulRichText?.html
-  const exLinks =
-    github || site ? (
-      <BtnList>
-        {github ? (
-          <Btn href={github} target="_blank" icon="github">
-            Github
-          </Btn>
-        ) : null}
-        {site ? (
-          <Btn href={site} target="_blank">
-            Site
-          </Btn>
-        ) : null}
-      </BtnList>
-    ) : null
+  const exLinks = fields?.parsedLinks
+    ? createExLinks(fields.parsedLinks as ContentfulPostFieldsParsedLinks[])
+    : null
   return (
     <div className={styles.card}>
       <div className={styles.left}>
         <h4 className={styles.title}>{title}</h4>
         {skills ? <SkillTagList skills={skills} /> : null}
-        {img || video ? (
+        {video || img ? (
           <div className={styles.thumbnail}>
-            <Thumbnail video={video} img={img} />
+            <Thumbnail img={img} video={video} />
           </div>
         ) : null}
       </div>
@@ -66,4 +60,4 @@ const Card: React.FC<{ work: PostFragment | void }> = ({ work }) => {
   )
 }
 
-export default Card
+export default React.memo(Card)

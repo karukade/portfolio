@@ -967,8 +967,6 @@ export type ContentfulBlogPostFieldsEnum =
   | 'author___skill___post___title'
   | 'author___skill___post___features'
   | 'author___skill___post___isJob'
-  | 'author___skill___post___github'
-  | 'author___skill___post___site'
   | 'author___skill___post___video'
   | 'author___skill___post___links'
   | 'author___skill___post___skills'
@@ -977,6 +975,7 @@ export type ContentfulBlogPostFieldsEnum =
   | 'author___skill___post___createdAt'
   | 'author___skill___post___updatedAt'
   | 'author___skill___post___node_locale'
+  | 'author___skill___post___isPined'
   | 'author___shortBio___id'
   | 'author___shortBio___parent___id'
   | 'author___shortBio___parent___children'
@@ -1803,8 +1802,6 @@ export type ContentfulPersonFieldsEnum =
   | 'skill___post___title'
   | 'skill___post___features'
   | 'skill___post___isJob'
-  | 'skill___post___github'
-  | 'skill___post___site'
   | 'skill___post___video'
   | 'skill___post___links'
   | 'skill___post___skills'
@@ -1820,12 +1817,6 @@ export type ContentfulPersonFieldsEnum =
   | 'skill___post___skills___updatedAt'
   | 'skill___post___skills___node_locale'
   | 'skill___post___skills___post'
-  | 'skill___post___img___id'
-  | 'skill___post___img___children'
-  | 'skill___post___img___contentful_id'
-  | 'skill___post___img___title'
-  | 'skill___post___img___description'
-  | 'skill___post___img___node_locale'
   | 'skill___post___description___id'
   | 'skill___post___description___children'
   | 'skill___post___description___content'
@@ -1838,6 +1829,14 @@ export type ContentfulPersonFieldsEnum =
   | 'skill___post___updatedAt'
   | 'skill___post___sys___revision'
   | 'skill___post___node_locale'
+  | 'skill___post___fields___parsedLinks'
+  | 'skill___post___isPined'
+  | 'skill___post___img___id'
+  | 'skill___post___img___children'
+  | 'skill___post___img___contentful_id'
+  | 'skill___post___img___title'
+  | 'skill___post___img___description'
+  | 'skill___post___img___node_locale'
   | 'skill___post___childContentfulPostDescriptionRichTextNode___id'
   | 'skill___post___childContentfulPostDescriptionRichTextNode___children'
   | 'skill___post___childContentfulPostDescriptionRichTextNode___content'
@@ -2384,12 +2383,9 @@ export type ContentfulPost = Node & {
   title?: Maybe<Scalars['String']>;
   features?: Maybe<Array<Maybe<Scalars['String']>>>;
   isJob?: Maybe<Scalars['Boolean']>;
-  github?: Maybe<Scalars['String']>;
-  site?: Maybe<Scalars['String']>;
   video?: Maybe<Scalars['String']>;
   links?: Maybe<Array<Maybe<Scalars['String']>>>;
   skills?: Maybe<Array<Maybe<ContentfulSkill>>>;
-  img?: Maybe<ContentfulAsset>;
   description?: Maybe<ContentfulPostDescriptionRichTextNode>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
@@ -2397,6 +2393,9 @@ export type ContentfulPost = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulPostSys>;
   node_locale?: Maybe<Scalars['String']>;
+  fields?: Maybe<ContentfulPostFields>;
+  isPined?: Maybe<Scalars['Boolean']>;
+  img?: Maybe<ContentfulAsset>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNode>;
 };
 
@@ -2703,6 +2702,10 @@ export type ContentfulPostEdge = {
   previous?: Maybe<ContentfulPost>;
 };
 
+export type ContentfulPostFields = {
+  parsedLinks?: Maybe<Array<Maybe<ContentfulPostFieldsParsedLinks>>>;
+};
+
 export type ContentfulPostFieldsEnum = 
   | 'id'
   | 'parent___id'
@@ -2793,8 +2796,6 @@ export type ContentfulPostFieldsEnum =
   | 'title'
   | 'features'
   | 'isJob'
-  | 'github'
-  | 'site'
   | 'video'
   | 'links'
   | 'skills'
@@ -2919,8 +2920,6 @@ export type ContentfulPostFieldsEnum =
   | 'skills___post___title'
   | 'skills___post___features'
   | 'skills___post___isJob'
-  | 'skills___post___github'
-  | 'skills___post___site'
   | 'skills___post___video'
   | 'skills___post___links'
   | 'skills___post___skills'
@@ -2936,12 +2935,6 @@ export type ContentfulPostFieldsEnum =
   | 'skills___post___skills___updatedAt'
   | 'skills___post___skills___node_locale'
   | 'skills___post___skills___post'
-  | 'skills___post___img___id'
-  | 'skills___post___img___children'
-  | 'skills___post___img___contentful_id'
-  | 'skills___post___img___title'
-  | 'skills___post___img___description'
-  | 'skills___post___img___node_locale'
   | 'skills___post___description___id'
   | 'skills___post___description___children'
   | 'skills___post___description___content'
@@ -2954,12 +2947,97 @@ export type ContentfulPostFieldsEnum =
   | 'skills___post___updatedAt'
   | 'skills___post___sys___revision'
   | 'skills___post___node_locale'
+  | 'skills___post___fields___parsedLinks'
+  | 'skills___post___isPined'
+  | 'skills___post___img___id'
+  | 'skills___post___img___children'
+  | 'skills___post___img___contentful_id'
+  | 'skills___post___img___title'
+  | 'skills___post___img___description'
+  | 'skills___post___img___node_locale'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___id'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___children'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___content'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___nodeType'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___description'
   | 'skills___post___childContentfulPostDescriptionRichTextNode___json'
+  | 'description___id'
+  | 'description___parent___id'
+  | 'description___parent___parent___id'
+  | 'description___parent___parent___children'
+  | 'description___parent___children'
+  | 'description___parent___children___id'
+  | 'description___parent___children___children'
+  | 'description___parent___internal___content'
+  | 'description___parent___internal___contentDigest'
+  | 'description___parent___internal___description'
+  | 'description___parent___internal___fieldOwners'
+  | 'description___parent___internal___ignoreType'
+  | 'description___parent___internal___mediaType'
+  | 'description___parent___internal___owner'
+  | 'description___parent___internal___type'
+  | 'description___children'
+  | 'description___children___id'
+  | 'description___children___parent___id'
+  | 'description___children___parent___children'
+  | 'description___children___children'
+  | 'description___children___children___id'
+  | 'description___children___children___children'
+  | 'description___children___internal___content'
+  | 'description___children___internal___contentDigest'
+  | 'description___children___internal___description'
+  | 'description___children___internal___fieldOwners'
+  | 'description___children___internal___ignoreType'
+  | 'description___children___internal___mediaType'
+  | 'description___children___internal___owner'
+  | 'description___children___internal___type'
+  | 'description___internal___content'
+  | 'description___internal___contentDigest'
+  | 'description___internal___description'
+  | 'description___internal___fieldOwners'
+  | 'description___internal___ignoreType'
+  | 'description___internal___mediaType'
+  | 'description___internal___owner'
+  | 'description___internal___type'
+  | 'description___content'
+  | 'description___content___content'
+  | 'description___content___content___value'
+  | 'description___content___content___nodeType'
+  | 'description___content___content___content'
+  | 'description___content___nodeType'
+  | 'description___nodeType'
+  | 'description___description'
+  | 'description___json'
+  | 'description___childContentfulRichText___id'
+  | 'description___childContentfulRichText___parent___id'
+  | 'description___childContentfulRichText___parent___children'
+  | 'description___childContentfulRichText___children'
+  | 'description___childContentfulRichText___children___id'
+  | 'description___childContentfulRichText___children___children'
+  | 'description___childContentfulRichText___internal___content'
+  | 'description___childContentfulRichText___internal___contentDigest'
+  | 'description___childContentfulRichText___internal___description'
+  | 'description___childContentfulRichText___internal___fieldOwners'
+  | 'description___childContentfulRichText___internal___ignoreType'
+  | 'description___childContentfulRichText___internal___mediaType'
+  | 'description___childContentfulRichText___internal___owner'
+  | 'description___childContentfulRichText___internal___type'
+  | 'description___childContentfulRichText___html'
+  | 'description___childContentfulRichText___timeToRead'
+  | 'spaceId'
+  | 'contentful_id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'sys___contentType___sys___contentful_id'
+  | 'node_locale'
+  | 'fields___parsedLinks'
+  | 'fields___parsedLinks___link'
+  | 'fields___parsedLinks___value'
+  | 'isPined'
   | 'img___id'
   | 'img___parent___id'
   | 'img___parent___parent___id'
@@ -3046,79 +3124,6 @@ export type ContentfulPostFieldsEnum =
   | 'img___resize___width'
   | 'img___resize___height'
   | 'img___resize___aspectRatio'
-  | 'description___id'
-  | 'description___parent___id'
-  | 'description___parent___parent___id'
-  | 'description___parent___parent___children'
-  | 'description___parent___children'
-  | 'description___parent___children___id'
-  | 'description___parent___children___children'
-  | 'description___parent___internal___content'
-  | 'description___parent___internal___contentDigest'
-  | 'description___parent___internal___description'
-  | 'description___parent___internal___fieldOwners'
-  | 'description___parent___internal___ignoreType'
-  | 'description___parent___internal___mediaType'
-  | 'description___parent___internal___owner'
-  | 'description___parent___internal___type'
-  | 'description___children'
-  | 'description___children___id'
-  | 'description___children___parent___id'
-  | 'description___children___parent___children'
-  | 'description___children___children'
-  | 'description___children___children___id'
-  | 'description___children___children___children'
-  | 'description___children___internal___content'
-  | 'description___children___internal___contentDigest'
-  | 'description___children___internal___description'
-  | 'description___children___internal___fieldOwners'
-  | 'description___children___internal___ignoreType'
-  | 'description___children___internal___mediaType'
-  | 'description___children___internal___owner'
-  | 'description___children___internal___type'
-  | 'description___internal___content'
-  | 'description___internal___contentDigest'
-  | 'description___internal___description'
-  | 'description___internal___fieldOwners'
-  | 'description___internal___ignoreType'
-  | 'description___internal___mediaType'
-  | 'description___internal___owner'
-  | 'description___internal___type'
-  | 'description___content'
-  | 'description___content___content'
-  | 'description___content___content___value'
-  | 'description___content___content___nodeType'
-  | 'description___content___content___content'
-  | 'description___content___nodeType'
-  | 'description___nodeType'
-  | 'description___description'
-  | 'description___json'
-  | 'description___childContentfulRichText___id'
-  | 'description___childContentfulRichText___parent___id'
-  | 'description___childContentfulRichText___parent___children'
-  | 'description___childContentfulRichText___children'
-  | 'description___childContentfulRichText___children___id'
-  | 'description___childContentfulRichText___children___children'
-  | 'description___childContentfulRichText___internal___content'
-  | 'description___childContentfulRichText___internal___contentDigest'
-  | 'description___childContentfulRichText___internal___description'
-  | 'description___childContentfulRichText___internal___fieldOwners'
-  | 'description___childContentfulRichText___internal___ignoreType'
-  | 'description___childContentfulRichText___internal___mediaType'
-  | 'description___childContentfulRichText___internal___owner'
-  | 'description___childContentfulRichText___internal___type'
-  | 'description___childContentfulRichText___html'
-  | 'description___childContentfulRichText___timeToRead'
-  | 'spaceId'
-  | 'contentful_id'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'sys___revision'
-  | 'sys___contentType___sys___type'
-  | 'sys___contentType___sys___linkType'
-  | 'sys___contentType___sys___id'
-  | 'sys___contentType___sys___contentful_id'
-  | 'node_locale'
   | 'childContentfulPostDescriptionRichTextNode___id'
   | 'childContentfulPostDescriptionRichTextNode___parent___id'
   | 'childContentfulPostDescriptionRichTextNode___parent___parent___id'
@@ -3183,6 +3188,24 @@ export type ContentfulPostFieldsEnum =
   | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___html'
   | 'childContentfulPostDescriptionRichTextNode___childContentfulRichText___timeToRead';
 
+export type ContentfulPostFieldsFilterInput = {
+  parsedLinks?: Maybe<ContentfulPostFieldsParsedLinksFilterListInput>;
+};
+
+export type ContentfulPostFieldsParsedLinks = {
+  link?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulPostFieldsParsedLinksFilterInput = {
+  link?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulPostFieldsParsedLinksFilterListInput = {
+  elemMatch?: Maybe<ContentfulPostFieldsParsedLinksFilterInput>;
+};
+
 export type ContentfulPostFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3191,12 +3214,9 @@ export type ContentfulPostFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   features?: Maybe<StringQueryOperatorInput>;
   isJob?: Maybe<BooleanQueryOperatorInput>;
-  github?: Maybe<StringQueryOperatorInput>;
-  site?: Maybe<StringQueryOperatorInput>;
   video?: Maybe<StringQueryOperatorInput>;
   links?: Maybe<StringQueryOperatorInput>;
   skills?: Maybe<ContentfulSkillFilterListInput>;
-  img?: Maybe<ContentfulAssetFilterInput>;
   description?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
@@ -3204,6 +3224,9 @@ export type ContentfulPostFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<ContentfulPostFieldsFilterInput>;
+  isPined?: Maybe<BooleanQueryOperatorInput>;
+  img?: Maybe<ContentfulAssetFilterInput>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
 };
 
@@ -3707,8 +3730,6 @@ export type ContentfulSkillFieldsEnum =
   | 'person___skill___post___title'
   | 'person___skill___post___features'
   | 'person___skill___post___isJob'
-  | 'person___skill___post___github'
-  | 'person___skill___post___site'
   | 'person___skill___post___video'
   | 'person___skill___post___links'
   | 'person___skill___post___skills'
@@ -3717,6 +3738,7 @@ export type ContentfulSkillFieldsEnum =
   | 'person___skill___post___createdAt'
   | 'person___skill___post___updatedAt'
   | 'person___skill___post___node_locale'
+  | 'person___skill___post___isPined'
   | 'person___shortBio___id'
   | 'person___shortBio___parent___id'
   | 'person___shortBio___parent___children'
@@ -3862,8 +3884,6 @@ export type ContentfulSkillFieldsEnum =
   | 'post___title'
   | 'post___features'
   | 'post___isJob'
-  | 'post___github'
-  | 'post___site'
   | 'post___video'
   | 'post___links'
   | 'post___skills'
@@ -3910,8 +3930,6 @@ export type ContentfulSkillFieldsEnum =
   | 'post___skills___post___title'
   | 'post___skills___post___features'
   | 'post___skills___post___isJob'
-  | 'post___skills___post___github'
-  | 'post___skills___post___site'
   | 'post___skills___post___video'
   | 'post___skills___post___links'
   | 'post___skills___post___skills'
@@ -3920,6 +3938,41 @@ export type ContentfulSkillFieldsEnum =
   | 'post___skills___post___createdAt'
   | 'post___skills___post___updatedAt'
   | 'post___skills___post___node_locale'
+  | 'post___skills___post___isPined'
+  | 'post___description___id'
+  | 'post___description___parent___id'
+  | 'post___description___parent___children'
+  | 'post___description___children'
+  | 'post___description___children___id'
+  | 'post___description___children___children'
+  | 'post___description___internal___content'
+  | 'post___description___internal___contentDigest'
+  | 'post___description___internal___description'
+  | 'post___description___internal___fieldOwners'
+  | 'post___description___internal___ignoreType'
+  | 'post___description___internal___mediaType'
+  | 'post___description___internal___owner'
+  | 'post___description___internal___type'
+  | 'post___description___content'
+  | 'post___description___content___content'
+  | 'post___description___content___nodeType'
+  | 'post___description___nodeType'
+  | 'post___description___description'
+  | 'post___description___json'
+  | 'post___description___childContentfulRichText___id'
+  | 'post___description___childContentfulRichText___children'
+  | 'post___description___childContentfulRichText___html'
+  | 'post___description___childContentfulRichText___timeToRead'
+  | 'post___spaceId'
+  | 'post___contentful_id'
+  | 'post___createdAt'
+  | 'post___updatedAt'
+  | 'post___sys___revision'
+  | 'post___node_locale'
+  | 'post___fields___parsedLinks'
+  | 'post___fields___parsedLinks___link'
+  | 'post___fields___parsedLinks___value'
+  | 'post___isPined'
   | 'post___img___id'
   | 'post___img___parent___id'
   | 'post___img___parent___children'
@@ -3981,36 +4034,6 @@ export type ContentfulSkillFieldsEnum =
   | 'post___img___resize___width'
   | 'post___img___resize___height'
   | 'post___img___resize___aspectRatio'
-  | 'post___description___id'
-  | 'post___description___parent___id'
-  | 'post___description___parent___children'
-  | 'post___description___children'
-  | 'post___description___children___id'
-  | 'post___description___children___children'
-  | 'post___description___internal___content'
-  | 'post___description___internal___contentDigest'
-  | 'post___description___internal___description'
-  | 'post___description___internal___fieldOwners'
-  | 'post___description___internal___ignoreType'
-  | 'post___description___internal___mediaType'
-  | 'post___description___internal___owner'
-  | 'post___description___internal___type'
-  | 'post___description___content'
-  | 'post___description___content___content'
-  | 'post___description___content___nodeType'
-  | 'post___description___nodeType'
-  | 'post___description___description'
-  | 'post___description___json'
-  | 'post___description___childContentfulRichText___id'
-  | 'post___description___childContentfulRichText___children'
-  | 'post___description___childContentfulRichText___html'
-  | 'post___description___childContentfulRichText___timeToRead'
-  | 'post___spaceId'
-  | 'post___contentful_id'
-  | 'post___createdAt'
-  | 'post___updatedAt'
-  | 'post___sys___revision'
-  | 'post___node_locale'
   | 'post___childContentfulPostDescriptionRichTextNode___id'
   | 'post___childContentfulPostDescriptionRichTextNode___parent___id'
   | 'post___childContentfulPostDescriptionRichTextNode___parent___children'
@@ -5081,12 +5104,9 @@ export type QueryContentfulPostArgs = {
   title?: Maybe<StringQueryOperatorInput>;
   features?: Maybe<StringQueryOperatorInput>;
   isJob?: Maybe<BooleanQueryOperatorInput>;
-  github?: Maybe<StringQueryOperatorInput>;
-  site?: Maybe<StringQueryOperatorInput>;
   video?: Maybe<StringQueryOperatorInput>;
   links?: Maybe<StringQueryOperatorInput>;
   skills?: Maybe<ContentfulSkillFilterListInput>;
-  img?: Maybe<ContentfulAssetFilterInput>;
   description?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
@@ -5094,6 +5114,9 @@ export type QueryContentfulPostArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<ContentfulPostFieldsFilterInput>;
+  isPined?: Maybe<BooleanQueryOperatorInput>;
+  img?: Maybe<ContentfulAssetFilterInput>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
 };
 
@@ -6129,8 +6152,8 @@ export type StringQueryOperatorInput = {
 };
 
 export type PostFragment = (
-  Pick<ContentfulPost, 'id' | 'title' | 'github' | 'site' | 'features' | 'video'>
-  & { description?: Maybe<{ childContentfulRichText?: Maybe<Pick<ContentfulRichText, 'html'>> }>, skills?: Maybe<Array<Maybe<SkillFragment>>>, img?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluidFragment> }> }
+  Pick<ContentfulPost, 'id' | 'title' | 'features' | 'video' | 'links'>
+  & { description?: Maybe<{ childContentfulRichText?: Maybe<Pick<ContentfulRichText, 'html'>> }>, skills?: Maybe<Array<Maybe<SkillFragment>>>, img?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluidFragment> }>, fields?: Maybe<{ parsedLinks?: Maybe<Array<Maybe<Pick<ContentfulPostFieldsParsedLinks, 'link' | 'value'>>>> }> }
 );
 
 export type SkillFragment = Pick<ContentfulSkill, 'id' | 'name' | 'key'>;

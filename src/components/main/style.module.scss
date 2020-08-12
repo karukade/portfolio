@@ -8,6 +8,12 @@
 
 .tab-panel-container {
   position: relative;
+  margin-left: -20px;
+  margin-right: -20px;
+  @include mq{
+    margin-left: -24px;
+    margin-right: -24px;
+  }
 }
 
 .tab-panel {
@@ -15,6 +21,10 @@
   left: 0;
   position: absolute;
   width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  background-color: $base-gray;
 }
 
 .tabs-container {

@@ -1,5 +1,6 @@
 import React, { useMemo } from "react"
 import Card from "../card"
+import styles from "./style.module.scss"
 import { PostFragment } from "../../../types/graphql-types"
 
 const getCards = (items: PostFragment[]) =>
@@ -7,7 +8,7 @@ const getCards = (items: PostFragment[]) =>
 
 const WorksList: React.FC<{ works: PostFragment[] }> = ({ works }) => {
   const ListItems = useMemo(() => getCards(works), [works])
-  return <>{ListItems}</>
+  return <div className={styles.worksList}>{ListItems}</div>
 }
 
 export default WorksList
