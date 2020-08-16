@@ -9,9 +9,11 @@ const { INLINES } = require("@contentful/rich-text-types")
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Title from siteMetadata`,
-    description: `A simple description about pandas eating lots`,
-    author: `gatsby`
+    title: `嘉手苅志朗|Shiro Kadekaru`,
+    description: `嘉手苅志朗のポートフォリオサイト`,
+    keywords: `嘉手苅志朗,カデカルシロウ,Shiro Kadekaru`,
+    author: `Shiro Kadekaru`,
+    siteUrl: `https://kadekaru.netlify.app/`
   },
   plugins: [
     `gatsby-plugin-scss-typescript`,

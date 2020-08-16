@@ -8,13 +8,14 @@
   + & {
     margin-top: 24px;
   } 
-  @include mq{
+  @include mq(l){
     display: flex;
   }
 }
 
 .left {
-  @include mq{
+  margin-bottom: 16px;
+  @include mq(l){
     min-width: 350px;
     margin-right: 30px;
   }

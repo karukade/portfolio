@@ -4,7 +4,6 @@
   background-color: $primary;
   line-height: 1;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   &-logo {
     padding: 18px;
@@ -17,7 +16,6 @@
         transform: rotate(180deg);
       }
     }
-    height: 62px;
     width: 62px;
     background-color: darken($primary, 40%);
     display: flex;
@@ -27,6 +25,12 @@
       will-change: transform;
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       width: 16px;
+    }
+  }
+  &-logo {
+    > * {
+      display: inline-block;
+      margin-top: 8px;
     }
   }
 }

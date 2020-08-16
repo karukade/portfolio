@@ -1,19 +1,28 @@
 @import "../../styles/vars.scss";
 
-$side-width: 400px;
+$side-width-l: 400px;
+$side-width-m: 300px;
 $stick-out: 48px;
 
 .container {
   background-color: $base-gray;
   @include mq{
     min-height: 100vh;
-    padding-left: $side-width;
+    padding-left: $side-width-m;
     will-change: padding-left;
     transition: padding-left 0.2s $main-ease;
     &.side-close {
       padding-left: $stick-out;
       .side {
-        transform: translateX(-($side-width - $stick-out));
+        transform: translateX(-($side-width-m - $stick-out));
+      }
+    }
+  }
+  @include mq(l) {
+    padding-left: $side-width-l;
+    &.side-close {
+      .side {
+        transform: translateX(-($side-width-l - $stick-out));
       }
     }
   }
@@ -26,11 +35,14 @@ $stick-out: 48px;
     top: 0;
     bottom: 0;
     overflow: auto;
-    width: $side-width;
+    width: $side-width-m;
     background-color: #fff;
     transition: transform 200ms $main-ease;
     will-change: transform;
     z-index: 1;
+  }
+  @include mq(l) {
+    width: $side-width-l;
   }
 }
 

@@ -969,13 +969,13 @@ export type ContentfulBlogPostFieldsEnum =
   | 'author___skill___post___isJob'
   | 'author___skill___post___video'
   | 'author___skill___post___links'
+  | 'author___skill___post___isPined'
   | 'author___skill___post___skills'
   | 'author___skill___post___spaceId'
   | 'author___skill___post___contentful_id'
   | 'author___skill___post___createdAt'
   | 'author___skill___post___updatedAt'
   | 'author___skill___post___node_locale'
-  | 'author___skill___post___isPined'
   | 'author___shortBio___id'
   | 'author___shortBio___parent___id'
   | 'author___shortBio___parent___children'
@@ -1804,6 +1804,7 @@ export type ContentfulPersonFieldsEnum =
   | 'skill___post___isJob'
   | 'skill___post___video'
   | 'skill___post___links'
+  | 'skill___post___isPined'
   | 'skill___post___skills'
   | 'skill___post___skills___id'
   | 'skill___post___skills___children'
@@ -1830,7 +1831,6 @@ export type ContentfulPersonFieldsEnum =
   | 'skill___post___sys___revision'
   | 'skill___post___node_locale'
   | 'skill___post___fields___parsedLinks'
-  | 'skill___post___isPined'
   | 'skill___post___img___id'
   | 'skill___post___img___children'
   | 'skill___post___img___contentful_id'
@@ -2385,6 +2385,7 @@ export type ContentfulPost = Node & {
   isJob?: Maybe<Scalars['Boolean']>;
   video?: Maybe<Scalars['String']>;
   links?: Maybe<Array<Maybe<Scalars['String']>>>;
+  isPined?: Maybe<Scalars['Boolean']>;
   skills?: Maybe<Array<Maybe<ContentfulSkill>>>;
   description?: Maybe<ContentfulPostDescriptionRichTextNode>;
   spaceId?: Maybe<Scalars['String']>;
@@ -2394,7 +2395,6 @@ export type ContentfulPost = Node & {
   sys?: Maybe<ContentfulPostSys>;
   node_locale?: Maybe<Scalars['String']>;
   fields?: Maybe<ContentfulPostFields>;
-  isPined?: Maybe<Scalars['Boolean']>;
   img?: Maybe<ContentfulAsset>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNode>;
 };
@@ -2798,6 +2798,7 @@ export type ContentfulPostFieldsEnum =
   | 'isJob'
   | 'video'
   | 'links'
+  | 'isPined'
   | 'skills'
   | 'skills___id'
   | 'skills___parent___id'
@@ -2922,6 +2923,7 @@ export type ContentfulPostFieldsEnum =
   | 'skills___post___isJob'
   | 'skills___post___video'
   | 'skills___post___links'
+  | 'skills___post___isPined'
   | 'skills___post___skills'
   | 'skills___post___skills___id'
   | 'skills___post___skills___children'
@@ -2948,7 +2950,6 @@ export type ContentfulPostFieldsEnum =
   | 'skills___post___sys___revision'
   | 'skills___post___node_locale'
   | 'skills___post___fields___parsedLinks'
-  | 'skills___post___isPined'
   | 'skills___post___img___id'
   | 'skills___post___img___children'
   | 'skills___post___img___contentful_id'
@@ -3037,7 +3038,6 @@ export type ContentfulPostFieldsEnum =
   | 'fields___parsedLinks'
   | 'fields___parsedLinks___link'
   | 'fields___parsedLinks___value'
-  | 'isPined'
   | 'img___id'
   | 'img___parent___id'
   | 'img___parent___parent___id'
@@ -3216,6 +3216,7 @@ export type ContentfulPostFilterInput = {
   isJob?: Maybe<BooleanQueryOperatorInput>;
   video?: Maybe<StringQueryOperatorInput>;
   links?: Maybe<StringQueryOperatorInput>;
+  isPined?: Maybe<BooleanQueryOperatorInput>;
   skills?: Maybe<ContentfulSkillFilterListInput>;
   description?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -3225,7 +3226,6 @@ export type ContentfulPostFilterInput = {
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   fields?: Maybe<ContentfulPostFieldsFilterInput>;
-  isPined?: Maybe<BooleanQueryOperatorInput>;
   img?: Maybe<ContentfulAssetFilterInput>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
 };
@@ -3732,13 +3732,13 @@ export type ContentfulSkillFieldsEnum =
   | 'person___skill___post___isJob'
   | 'person___skill___post___video'
   | 'person___skill___post___links'
+  | 'person___skill___post___isPined'
   | 'person___skill___post___skills'
   | 'person___skill___post___spaceId'
   | 'person___skill___post___contentful_id'
   | 'person___skill___post___createdAt'
   | 'person___skill___post___updatedAt'
   | 'person___skill___post___node_locale'
-  | 'person___skill___post___isPined'
   | 'person___shortBio___id'
   | 'person___shortBio___parent___id'
   | 'person___shortBio___parent___children'
@@ -3886,6 +3886,7 @@ export type ContentfulSkillFieldsEnum =
   | 'post___isJob'
   | 'post___video'
   | 'post___links'
+  | 'post___isPined'
   | 'post___skills'
   | 'post___skills___id'
   | 'post___skills___parent___id'
@@ -3932,13 +3933,13 @@ export type ContentfulSkillFieldsEnum =
   | 'post___skills___post___isJob'
   | 'post___skills___post___video'
   | 'post___skills___post___links'
+  | 'post___skills___post___isPined'
   | 'post___skills___post___skills'
   | 'post___skills___post___spaceId'
   | 'post___skills___post___contentful_id'
   | 'post___skills___post___createdAt'
   | 'post___skills___post___updatedAt'
   | 'post___skills___post___node_locale'
-  | 'post___skills___post___isPined'
   | 'post___description___id'
   | 'post___description___parent___id'
   | 'post___description___parent___children'
@@ -3972,7 +3973,6 @@ export type ContentfulSkillFieldsEnum =
   | 'post___fields___parsedLinks'
   | 'post___fields___parsedLinks___link'
   | 'post___fields___parsedLinks___value'
-  | 'post___isPined'
   | 'post___img___id'
   | 'post___img___parent___id'
   | 'post___img___parent___children'
@@ -5106,6 +5106,7 @@ export type QueryContentfulPostArgs = {
   isJob?: Maybe<BooleanQueryOperatorInput>;
   video?: Maybe<StringQueryOperatorInput>;
   links?: Maybe<StringQueryOperatorInput>;
+  isPined?: Maybe<BooleanQueryOperatorInput>;
   skills?: Maybe<ContentfulSkillFilterListInput>;
   description?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -5115,7 +5116,6 @@ export type QueryContentfulPostArgs = {
   sys?: Maybe<ContentfulPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   fields?: Maybe<ContentfulPostFieldsFilterInput>;
-  isPined?: Maybe<BooleanQueryOperatorInput>;
   img?: Maybe<ContentfulAssetFilterInput>;
   childContentfulPostDescriptionRichTextNode?: Maybe<ContentfulPostDescriptionRichTextNodeFilterInput>;
 };
@@ -5507,7 +5507,9 @@ export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
+  | 'siteMetadata___keywords'
   | 'siteMetadata___author'
+  | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -6124,13 +6126,17 @@ export type SitePluginSortInput = {
 export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  keywords?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  keywords?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -6150,6 +6156,11 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+
+export type SiteMetaDataQueryVariables = {};
+
+
+export type SiteMetaDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'keywords' | 'siteUrl'>> }> };
 
 export type PostFragment = (
   Pick<ContentfulPost, 'id' | 'title' | 'features' | 'video' | 'links'>
