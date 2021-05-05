@@ -34,6 +34,16 @@ const Head: React.FC = () => {
       <meta property="og:title" content={site?.siteMetadata?.title} />
       <meta property="og:description" content={site?.siteMetadata?.description} />
       <meta property="og:site_name" content={site?.siteMetadata?.title} />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7E4MEMTMCB"></script>
+      <script>
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7E4MEMTMCB');
+        `}
+      </script>
       <script>
         {fonts}
       </script>
